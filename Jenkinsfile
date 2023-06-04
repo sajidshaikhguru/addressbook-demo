@@ -1,8 +1,7 @@
 pipeline {
-    agent { label 'ubuntu' }
+    agent any
     tools{
         maven 'my_maven'
-        git 'my_git'
     }
     stages {
         stage('Code checkout') {
