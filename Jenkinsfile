@@ -2,6 +2,7 @@ pipeline {
     agent { label 'ubuntu' }
     tools{
         maven 'my_maven'
+        git 'my_git'
     }
     stages {
         stage('Code checkout') {
