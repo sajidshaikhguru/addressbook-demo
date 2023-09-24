@@ -1,22 +1,41 @@
 pipeline {
     agent any
     tools{
-        maven 'my_maven'
+        maven 'myMaven'
     }
+
     stages {
-        stage('Code checkout') {
+        stage('Checkout the Source Code') {
             steps {
+                echo 'Checkout the code..........................................'
                 git 'https://github.com/niladrimondal/addressbook-demo.git'
             }
         }
-        stage('Build the Sourcecode') {
-            steps {
-                sh 'mvn clean package'
+        stage('Build The Source Code') {
+            steps{
+			    script{
+				     try{
+                       echo 'Build the Source Code ....................................'
+                       sh "mvn clean package"
+					 }
+					 catch(Exception e){
+                         echo 'handling the exception ...................................'
+                         emailext body: '''Hello Developer,
+
+                         The Job got failed during Build.
+
+                         Thanks,
+                         Devops''', subject: 'Attention: $(JOB_NAME) is failed. Please look into the Build Number $(BUILD_NUMBER)', to: 'niladrimondal.mondal@gmail.com'
+                    }
+				
+				}
+                
             }
         }
-        stage('Deploy the same to a tocat server') {
+        stage('Deploy the Application') {
             steps {
-                deploy adapters: [tomcat9(credentialsId: 'tomcat-cred', path: '', url: 'http://54.183.235.158:8081/')], contextPath: 'addressbooksc', war: '**/*.war'
+                echo 'Deploy the Application.....................................'
+                deploy adapters: [tomcat9(credentialsId: 'tomcat-cred', path: '', url: 'http://54.158.200.34:8081/')], contextPath: 'addressbookssimplilearn', war: '**/*.war'
             }
         }
     }
