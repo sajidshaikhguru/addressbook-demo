@@ -35,7 +35,7 @@ pipeline {
         stage('Deploy the Application') {
             steps {
                 echo 'Deploy the Application.....................................'
-                deploy adapters: [tomcat9(credentialsId: 'tomcat-cred', path: '', url: 'http://54.158.200.34:8081/')], contextPath: 'addressbookssimplilearn', war: '**/*.war'
+                deploy adapters: [tomcat9(credentialsId: 'tomcat-cred', path: '', url: 'http://18.213.4.101:8080/')], contextPath: 'addressbookssimplilearn', war: '**/*.war'
             }
         }
     }
