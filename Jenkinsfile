@@ -8,7 +8,7 @@ pipeline {
         stage('Checkout the Source Code') {
             steps {
                 echo 'Checkout the code..........................................'
-                git 'https://github.com/niladrimondal/addressbook-demo.git'
+                git 'https://github.com/sajidshaikhguru/addressbook-demo.git'
             }
         }
         stage('Build The Source Code') {
