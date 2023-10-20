@@ -25,7 +25,7 @@ pipeline {
                          The Job got failed during Build.
 
                          Thanks,
-                         Devops''', subject: 'Attention: $(JOB_NAME) is failed. Please look into the Build Number $(BUILD_NUMBER)', to: 'niladrimondal.mondal@gmail.com'
+                         
                     }
 				
 				}
