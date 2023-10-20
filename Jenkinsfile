@@ -30,5 +30,5 @@ pipeline {
                 deploy adapters: [tomcat9(credentialsId: 'tomcat-cred', path: '', url: 'http://18.213.4.101:8080/')], contextPath: 'addressbookssimplilearn', war: '**/*.war'
             }
         }
-    }
-}
+    
+
