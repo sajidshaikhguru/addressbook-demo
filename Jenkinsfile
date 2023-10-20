@@ -13,18 +13,10 @@ pipeline {
         }
         stage('Build The Source Code') {
             steps{
-			    script{
-				     try{
+			  
                        echo 'Build the Source Code ....................................'
                        sh "mvn clean package"
-					 }
-					 catch(Exception e){
-                         echo 'handling the exception ...................................'
-                         emailext body: '''Hello Developer,
-
-                         The Job got failed during Build.
-
-                         Thanks,
+					
                          
                     }
 				
